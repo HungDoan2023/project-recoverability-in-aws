@@ -1,0 +1,38 @@
+Last login: Mon Jul 31 15:35:10 2023 from 115.77.57.92
+[ec2-user@ip-10-1-10-29 ~]$ mysql -h replica-database.ct0cwpohj2gf.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> CREATE DATABASE teacher_db;
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [(none)]> use student_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [student_db]> select * from users;
++------+------------+-----------+
+| id   | first_name | last_name |
++------+------------+-----------+
+|    1 | Hung       | Doan      |
+|    2 | Loc        | Doan      |
++------+------------+-----------+
+2 rows in set (0.006 sec)
+
+MySQL [student_db]> CREATE TABLE users (id integer,first_name varchar(30),last_name varchar(30));
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [student_db]> select * from users
+    -> ;
++------+------------+-----------+
+| id   | first_name | last_name |
++------+------------+-----------+
+|    1 | Hung       | Doan      |
+|    2 | Loc        | Doan      |
++------+------------+-----------+
+2 rows in set (0.001 sec)

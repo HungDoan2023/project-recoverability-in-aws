@@ -1,0 +1,42 @@
+[root@ip-10-1-10-138 /]# mysql -h primary-database.cedyfo900my6.us-east-2.rds.amazonaws.com -P 3306 -u admin -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 51
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> create database student_db;
+Query OK, 1 row affected (0.021 sec)
+
+MySQL [(none)]> show studnent_db;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'studnent_db' at line 1
+MySQL [(none)]> use student_db;
+Database changed
+MySQL [student_db]> use primary_database;
+ERROR 1049 (42000): Unknown database 'primary_database'
+MySQL [student_db]> CREATE TABLE users (
+    -> id integer,
+    ->     first_name varchar(30),
+    ->     first_name varchar(30)
+    -> );
+ERROR 1060 (42S21): Duplicate column name 'first_name'
+MySQL [student_db]> CREATE TABLE users (id integer,first_name varchar(30),last_name varchar(30));
+Query OK, 0 rows affected (0.082 sec)
+
+MySQL [student_db]> INSERT INTO users (id, first_name, last_name) VALUES (1, 'Hung', 'Doan');
+Query OK, 1 row affected (0.013 sec)
+
+MySQL [student_db]> INSERT INTO users (id, first_name, last_name) VALUES (2, 'Loc', 'Doan');
+Query OK, 1 row affected (0.010 sec)
+
+MySQL [student_db]> select * from users;
++------+------------+-----------+
+| id   | first_name | last_name |
++------+------------+-----------+
+|    1 | Hung       | Doan      |
+|    2 | Loc        | Doan      |
++------+------------+-----------+
+2 rows in set (0.002 sec)

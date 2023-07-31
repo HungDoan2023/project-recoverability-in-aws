@@ -1,0 +1,11 @@
+1) Minimum RTO for a single AZ outage
+We assump that sing AZ outage happen, the recovery time objective (RTO) is total of the time that the process of recovery data will take and generate a new database identifier which replicated form the original db. So RTO is about under 10 mintues.
+
+2) Minimum RPO for a single AZ outage
+RPO focus on preventing the data loss, so it will describe about the time interval from disruptice event. For example, we define RPO for 1 hour so the transaction in that time can be safe in the event of a disaster.
+
+3) Minimum RTO for a single region outage
+For the single region outage, it can be take 5 mintues to promote a DB from replica mode to standalone db.
+
+4) Minimum RPO for a single region outage
+We have some type of RPO as Multi-AZ deployments, it can be take under 10 mintues to achive that with structure of the Udacity lab.
